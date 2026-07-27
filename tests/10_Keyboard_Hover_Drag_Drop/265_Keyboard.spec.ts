@@ -1,0 +1,17 @@
+import{test, expect, Locator} from "@playwright/test";
+test('Keyborad' , async({page})=>{
+
+    await page.goto("https://keycode.info");
+    await page.keyboard.press('A');
+    await page.screenshot({path: 'a.png'});
+
+    await page.keyboard.press('ArrowLeft');
+    await page.screenshot({ path: 'ArrowLeft.png' });
+
+    await page.keyboard.press('Shift+O');
+    await page.screenshot({ path: 'O.png' });
+
+    await page.keyboard.up("Shift");
+    await page.keyboard.down("Shift");
+
+})

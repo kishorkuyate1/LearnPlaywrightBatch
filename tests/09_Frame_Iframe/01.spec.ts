@@ -1,0 +1,21 @@
+import{test,expect} from "@playwright/test";
+
+test("Frame ", async({page})=>{
+
+await page.goto("https://app.thetestingacademy.com/playwright/frames/");
+let vechileFrame=await page.frameLocator("#frame-one");
+
+    await vechileFrame.locator("#RESULT_TextField-1").fill("CIaZ");
+    await vechileFrame.locator('#RESULT_TextField-2').fill('Kishor');
+    await vechileFrame.locator('#RESULT_TextField-3').fill('2012');
+    await vechileFrame.locator('#RESULT_RadioButton-1').selectOption('Hatchback');
+
+    await vechileFrame.locator('#RESULT_TextField-4').fill('2015');
+
+    await vechileFrame.locator('#RESULT_TextArea-1').fill('Amazing car with amazing family car in a budget');
+
+    await vechileFrame.getByText('Submit registration', { exact: true }).click();
+
+    let output = await vechileFrame.locator("#vehicle-output").innerText();
+    console.log(output);
+});
